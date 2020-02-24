@@ -5,6 +5,10 @@ form {
 }
 
 input {
+    &#name{
+        box-sizing: border-box;
+    }
+    display: block;
     padding: 5px 20px;
     width: 100%;
     line-height: 16px;
