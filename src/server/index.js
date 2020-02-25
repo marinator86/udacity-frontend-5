@@ -3,8 +3,12 @@ const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
 const cors = require('cors')
 const app = express()
-
+const bodyParser = require('body-parser')
+const aylien = require('./aylien.js')   
 app.use(express.static('dist'))
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cors())
 console.log(__dirname)
 
@@ -20,3 +24,14 @@ app.listen(8081, function () {
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
+
+app.post('/sentiment', function(req, res){
+    
+    aylien.sentiment(req.body)
+    .then(result => {
+        res.send(result)
+    }, error => {
+        console.log("Error happened duing alyien request.");
+        res.status(500).send(error.message)
+    });
+});
