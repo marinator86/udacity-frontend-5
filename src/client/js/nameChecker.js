@@ -7,10 +7,11 @@ function checkForName(inputText) {
         "Archer",
         "Georgiou"
     ]
-
-    if(names.includes(inputText)) {
+    const contains = names.includes(inputText);
+    if(contains) {
         alert("Welcome, Captain!")
     }
+    return contains;
 }
 
-export { checkForName }
+module.exports = { checkForName }

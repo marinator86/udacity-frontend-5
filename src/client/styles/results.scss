@@ -1,0 +1,41 @@
+$padding: 0.5em;
+.resultbox {
+    display: grid;
+    grid-template:  
+    "a a"
+    "b c"
+    "b d";
+    grid-template-columns: 1fr 6em;
+    gap: 3px;
+    
+    border: 1px solid #545454;
+    border-radius: 3px;
+
+    padding: $padding;
+    
+    .title {
+        grid-area: a;
+        padding: $padding;
+    }
+    .text {
+        grid-area: b;
+        padding: $padding;
+    }
+    .sentiment {
+        grid-area: c;
+        padding: $padding;
+        border: 1px none;
+        border-radius: 2px;
+        //border-color: ;
+        &.pos {
+            background-color: greenyellow;
+        }
+        &.neg {
+            background-color: orangered;
+        }
+    }
+    .polarity {
+        grid-area: d;
+        padding: $padding;
+    }
+}
