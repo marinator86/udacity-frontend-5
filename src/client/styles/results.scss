@@ -11,7 +11,8 @@ $padding: 0.5em;
     border: 1px solid #545454;
     border-radius: 3px;
 
-    padding: $padding;
+    padding: $padding/2;
+    margin-top: 1em;
     
     .title {
         grid-area: a;
@@ -21,7 +22,7 @@ $padding: 0.5em;
         grid-area: b;
         padding: $padding;
     }
-    .sentiment {
+    .polarity {
         grid-area: c;
         padding: $padding;
         border: 1px none;
@@ -34,7 +35,7 @@ $padding: 0.5em;
             background-color: orangered;
         }
     }
-    .polarity {
+    .subjectivity {
         grid-area: d;
         padding: $padding;
     }
