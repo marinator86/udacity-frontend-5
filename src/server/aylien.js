@@ -1,9 +1,9 @@
+const dotenv = require('dotenv');
+dotenv.config();
 var AYLIENTextAPI = require('aylien_textapi');
-const APP_ID = "ec076eaf";
-const APP_KEY = "f814651af07571a6a00ce150f229ae0d";
 var textapi = new AYLIENTextAPI({
-  application_id: APP_ID,
-  application_key: APP_KEY
+  application_id: process.env['APP_ID'],
+  application_key: process.env['APP_KEY']
 });
 
 /**
@@ -19,6 +19,7 @@ var textapi = new AYLIENTextAPI({
  */
 function sentiment(param){
     return new Promise((resolve, reject)=> {
+        console.log("here")
         textapi.sentiment(param, function(error, response) {
             if (error === null) {
                 resolve(response);

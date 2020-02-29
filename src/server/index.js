@@ -25,12 +25,13 @@ app.get('/test', function (req, res) {
 })
 
 app.post('/sentiment', function(req, res){
+    console.log("Alyien analysis requested: " + JSON.stringify(req.body));
     
     aylien.sentiment(req.body)
     .then(result => {
         res.send(result)
     }, error => {
-        console.log("Error happened duing alyien request.");
+        console.log("Error happened duing alyien request: "  +error.message);
         res.status(500).send(error.message)
     });
 });
