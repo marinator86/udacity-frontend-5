@@ -1,12 +1,21 @@
-const formHandler = require('./formHandler.js');
+const mockExport = {
+    updateDOM: jest.fn(i => i)
+}
+jest.mock('./DOMUpdater.js', () => mockExport);
 
-//jest.spyOn(window, 'alert').mockImplementation(() => {});
-jest.mock('./DOMUpdater.js', () => {
-    return {
-        updateDOM: () => {}
-    };
+const mockSuccessResponse = {};
+const mockJsonPromise = Promise.resolve(mockSuccessResponse);
+const mockFetchPromise = Promise.resolve({
+  json: () => mockJsonPromise,
 });
+global.fetch = jest.fn(() => mockFetchPromise);
 
-test('PeterPan should not be in list', () => {
-    expect(formHandler.handleSubmit({})).toBe(false);
-});
+test('formHandle', () => {
+    const formHandler = require('./formHandler.js');
+
+    return formHandler.handleSubmit('testUrl').then(data => {
+        expect(data).toStrictEqual({url:'testUrl'});
+        expect(global.fetch).toHaveBeenCalledTimes(1);
+        expect(mockExport.updateDOM).toHaveBeenCalledTimes(1);
+    });
+}); 

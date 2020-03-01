@@ -1,25 +1,29 @@
 const DOMUpdater = require('./DOMUpdater.js');
 
-function handleSubmit(event) {
+function handleEvent(event) {
     event.preventDefault();
 
     // check what text was put into the form field
     const url = document.getElementById('name').value;
 
     console.log("::: Form Submitted :::")
-    fetch('http://localhost:8081/sentiment', {
+    return handleSubmit(url);
+}
+
+function handleSubmit(url) {
+    return fetch('http://localhost:8081/sentiment', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
           },
         body: JSON.stringify({url: url})
     })
-    .then(res => { 
-        const response = res.json();
-        response.url = url;
-        return response;
+    .then(res => res.json())
+    .then(json => {
+        json.url = url;
+        return json;
     })
     .then(DOMUpdater.updateDOM);
 }
 
-export { handleSubmit }
+module.exports = { handleEvent, handleSubmit }

@@ -9,18 +9,15 @@
 
         <header>
             <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
+                Sentiment Checker
             </div>
         </header>
 
         <main>
             <section>
-                <form class="" onsubmit="return handleSubmit(event)">
+                <form class="" onsubmit="return handleEvent(event)">
                     <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return C.handleSubmit(event)" onsubmit="return C.handleSubmit(event)">
+                    <input type="submit" name="" value="Check sentiment" onclick="return C.handleEvent(event)" onsubmit="return C.handleEvent(event)">
                 </form>
             <section>
 
@@ -32,7 +29,7 @@
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p>Created by Mario</p>
         </footer>
         <script>
             // Check that service workers are supported
