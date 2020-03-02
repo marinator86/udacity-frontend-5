@@ -49,6 +49,15 @@ app.get('/search', (req, res) => {
     });
 });
 
+app.get('/geoInfo', (req, res) => {
+    const geonameId = req.query.geonameId;
+    geocoder.getInfo(geonameId).then(result => {
+        res.status(200).send(result);
+    }, error => {
+        res.status(500).send(error.message);
+    });
+});
+
 app.get('trips', function(req, res) {
     res.status(200).send([testResponse]);
 });

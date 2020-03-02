@@ -1,10 +1,10 @@
 const GeocoderGeonames = require('geocoder-geonames');
 const geocoder = new GeocoderGeonames({
-    username:      'marinator86',
+    username: process.env.GEONAMES_USER,
 });
 
 /**
- * Returns 
+ * Returns search for a term 
  * @param {string} query the query - a city at best
  */
 async function search(query) {
@@ -23,4 +23,14 @@ async function search(query) {
     }); 
 }
 
-module.exports = { search }
+/**
+ * Returns search for a term 
+ * @param {string} query the query - a city at best
+ */
+async function getInfo(geonameId) {
+    return geocoder.get('get',{
+        geonameId: geonameId,
+    }); 
+}
+
+module.exports = { search, getInfo }
