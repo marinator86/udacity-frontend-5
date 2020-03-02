@@ -1,3 +1,4 @@
+// https://github.com/StephanGeorg/geocoder-geonames    
 const GeocoderGeonames = require('geocoder-geonames');
 const geocoder = new GeocoderGeonames({
     username: process.env.GEONAMES_USER,
@@ -24,8 +25,8 @@ async function search(query) {
 }
 
 /**
- * Returns search for a term 
- * @param {string} query the query - a city at best
+ * Returns detailed Info from geonames.org
+ * @param {string} geonameId the geonameId 
  */
 async function getInfo(geonameId) {
     return geocoder.get('get',{

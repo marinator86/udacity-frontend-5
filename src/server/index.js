@@ -30,6 +30,7 @@ const testResponse = {
     startDate: "2020-04-02",
     endDate: "2020-04-07",
     location: {
+        geonameId: 1231243,
         name: "Palma",
         lat: 39.5693900,
         long: 2.6502400
@@ -40,7 +41,8 @@ const testResponse = {
     image: "https://www.recordrentacar.com/blog/wp-content/uploads/2013/08/shutterstock_268209080-1_1.jpg"
 };
 
-app.get('/search', (req, res) => {
+// geoSearch?q=Stuttgart
+app.get('/geoSearch', (req, res) => {
     const query = req.query.q;
     geocoder.search(query).then(result => {
         res.status(200).send(result);
@@ -49,6 +51,7 @@ app.get('/search', (req, res) => {
     });
 });
 
+// geoInfo?geonameId=2312343
 app.get('/geoInfo', (req, res) => {
     const geonameId = req.query.geonameId;
     geocoder.getInfo(geonameId).then(result => {
@@ -62,6 +65,12 @@ app.get('trips', function(req, res) {
     res.status(200).send([testResponse]);
 });
 
+/**
+ * Each trip request will need the
+ * geonameId, startDate and endDate.
+ * 
+ * Response will contain the complete trip info.
+ */
 app.post('/trip', function(req, res) {
     console.log("trip added: " + JSON.stringify(req.body));
     res.status(200).send(testResponse);
