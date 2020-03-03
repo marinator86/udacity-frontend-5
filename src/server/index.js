@@ -6,6 +6,8 @@ const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
 const geocoder = require('./geocoder.js');
+const weather = require('./darkSky.js');
+
 app.use(express.static('dist'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -40,6 +42,19 @@ const testResponse = {
     },
     image: "https://www.recordrentacar.com/blog/wp-content/uploads/2013/08/shutterstock_268209080-1_1.jpg"
 };
+
+// weather?day=2020-03-02&lat=&lon=
+app.get('/weather', (req, res) => {
+    const day = req.query.day;
+    const lat = req.query.lat;
+    const lon = req.query.lon;
+
+    weather.loadDay(day, lat, lon).then(result => {
+        res.status(200).send(result);
+    }, error => {
+        res.status(500).send(error.message);
+    });
+});
 
 // geoSearch?q=Stuttgart
 app.get('/geoSearch', (req, res) => {
