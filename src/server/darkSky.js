@@ -20,8 +20,7 @@ async function loadDay(day, lat, lon) {
 
 async function loadDaysFromTo(dayFrom, dayTo, lat, lon){
     if(!dayTo.isAfter(dayFrom)){
-        res.status(400).send(`Date ${dayTo} is not after ${dayFrom}`);
-        return;
+        throw new Error(`Date ${dayTo} is not after ${dayFrom}`);
     }
 
     const daysBetween = dayTo.diff(dayFrom, 'days');
