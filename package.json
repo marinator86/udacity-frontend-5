@@ -20,6 +20,7 @@
     "geocoder-geonames": "^0.1.2",
     "jsdom": "^16.2.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "pixabay-api": "^1.0.4",
     "terser-webpack-plugin": "^2.3.5",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5",

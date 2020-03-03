@@ -7,6 +7,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const geocoder = require('./geocoder.js');
 const weather = require('./darkSky.js');
+const pix = require('./pixabay.js');
 const moment = require('moment');
 
 app.use(express.static('dist'));
@@ -43,6 +44,15 @@ const testResponse = {
     },
     image: "https://www.recordrentacar.com/blog/wp-content/uploads/2013/08/shutterstock_268209080-1_1.jpg"
 };
+
+app.get('/img', (req, res) => {
+    const q = req.query.q;
+    pix.search(q).then(result => {
+        res.status(200).send(result);
+    }, error => {
+        res.status(500).send(error.message);
+    });
+});
 
 // weather?dayFrom=2020-03-02T00:00:00&dayTo=2020-03-05T00:00:00&lat=&lon=
 app.get('/weather', (req, res) => {
