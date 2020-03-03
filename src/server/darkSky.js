@@ -18,4 +18,30 @@ async function loadDay(day, lat, lon) {
     .then(result => result.daily.data[0]);
 }
 
-module.exports = { loadDay }
+async function loadDaysFromTo(dayFrom, dayTo, lat, lon){
+    if(!dayTo.isAfter(dayFrom)){
+        res.status(400).send(`Date ${dayTo} is not after ${dayFrom}`);
+        return;
+    }
+
+    const daysBetween = dayTo.diff(dayFrom, 'days');
+    const days = [];
+
+    arr = [...Array(daysBetween + 1).keys()];
+    for(additional of arr.map(i => ++i)){
+        const newDate = dayFrom.clone().add(additional, 'd');
+        days.push(newDate);
+    }
+
+    return loadDays(days, lat, lon);
+}
+
+async function loadDays(days, lat, lon) {
+    const dailyPromises = [];
+    days.forEach(day => {
+        dailyPromises.push(loadDay(day, lat, lon));
+    });
+    return Promise.all(dailyPromises);
+}
+
+module.exports = { loadDay, loadDays, loadDaysFromTo }

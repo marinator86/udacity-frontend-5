@@ -7,6 +7,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const geocoder = require('./geocoder.js');
 const weather = require('./darkSky.js');
+const moment = require('moment');
 
 app.use(express.static('dist'));
 
@@ -43,13 +44,14 @@ const testResponse = {
     image: "https://www.recordrentacar.com/blog/wp-content/uploads/2013/08/shutterstock_268209080-1_1.jpg"
 };
 
-// weather?day=2020-03-02&lat=&lon=
+// weather?dayFrom=2020-03-02T00:00:00&dayTo=2020-03-05T00:00:00&lat=&lon=
 app.get('/weather', (req, res) => {
-    const day = req.query.day;
+    const dayFrom = moment(req.query.dayFrom);
+    const dayTo = moment(req.query.dayTo);
     const lat = req.query.lat;
     const lon = req.query.lon;
 
-    weather.loadDay(day, lat, lon).then(result => {
+    weather.loadDaysFromTo(dayFrom, dayTo, lat, lon).then(result => {
         res.status(200).send(result);
     }, error => {
         res.status(500).send(error.message);
