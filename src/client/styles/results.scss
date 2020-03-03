@@ -2,10 +2,10 @@ $padding: 0.5em;
 .resultbox {
     display: grid;
     grid-template:  
-    "a a"
-    "b c"
-    "b d";
-    grid-template-columns: 1fr 6em;
+    "a d c"
+    "b b c";
+    grid-template-columns: 1fr 1fr 18em;
+    grid-template-rows: 10em;
     gap: 3px;
     
     border: 1px solid #545454;
@@ -22,20 +22,15 @@ $padding: 0.5em;
         grid-area: b;
         padding: $padding;
     }
-    .polarity {
+    .image {
         grid-area: c;
         padding: $padding;
         border: 1px none;
         border-radius: 2px;
-        //border-color: ;
-        &.pos {
-            background-color: greenyellow;
-        }
-        &.neg {
-            background-color: orangered;
-        }
+        background-size: cover;
+        background-position: center;
     }
-    .subjectivity {
+    .dates {
         grid-area: d;
         padding: $padding;
     }

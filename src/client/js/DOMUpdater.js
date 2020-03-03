@@ -1,32 +1,32 @@
-function updateDOM(res) {
+function appendTrip(res) {
     const results = document.getElementById('results');
         
     const resultbox = document.createElement('div');
+    resultbox.setAttribute('id', res.id);
+    const trip = res.trip;
     const title = document.createElement('div');
-    const polarity = document.createElement('div');
-    const subjectivity = document.createElement('div');
+    const image = document.createElement('div');
+    const dates = document.createElement('div');
     const text = document.createElement('div');
 
     resultbox.classList.add('resultbox');
     title.classList.add('title');
-    polarity.classList.add('polarity');
-    polarity.classList.add(res.polarity == 'positive' ? 'pos' : 'neg');
-    subjectivity.classList.add('subjectivity');
+    image.classList.add('image');
+    dates.classList.add('dates');
     text.classList.add('text');
 
-    title.textContent = res.url;
-    polarity.textContent = res.polarity;
-    subjectivity.textContent = res.subjectivity;
-    text.textContent = res.text.substring(0, 500);
+    title.textContent = trip.location;
+    image.style.backgroundImage = `url('${trip.imageLink}')`;
+    dates.textContent = `${trip.dayFrom} until ${trip.dayTo}`;
 
     resultbox.appendChild(title);
-    resultbox.appendChild(polarity);
-    resultbox.appendChild(subjectivity);
+    resultbox.appendChild(image);
+    resultbox.appendChild(dates);
     resultbox.appendChild(text);
 
     results.appendChild(resultbox);
 }
 
 export {
-    updateDOM
+    appendTrip
 }

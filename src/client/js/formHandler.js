@@ -4,26 +4,26 @@ function handleEvent(event) {
     event.preventDefault();
 
     // check what text was put into the form field
-    const url = document.getElementById('name').value;
+    const tripRequest = {
+        location: document.getElementById('location').value,
+        dayFrom: document.getElementById('dayFrom').value,
+        dayTo: document.getElementById('dayTo').value,
+    }
 
     console.log("::: Form Submitted :::")
-    return handleSubmit(url);
+    return handleSubmit(tripRequest);
 }
 
-function handleSubmit(url) {
-    return fetch('http://localhost:8081/sentiment', {
+function handleSubmit(tripRequest) {
+    return fetch('http://localhost:8081/trip', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
           },
-        body: JSON.stringify({url: url})
+        body: JSON.stringify(tripRequest)
     })
     .then(res => res.json())
-    .then(json => {
-        json.url = url;
-        return json;
-    })
-    .then(DOMUpdater.updateDOM);
+    .then(DOMUpdater.appendTrip);
 }
 
 module.exports = { handleEvent, handleSubmit }

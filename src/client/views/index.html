@@ -2,27 +2,29 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Sentiment Checker</title>
+        <title>My personal trips</title>
     </head>
 
     <body>
 
         <header>
             <div class="">
-                Sentiment Checker
+                My personal trips
             </div>
         </header>
 
         <main>
             <section>
                 <form class="" onsubmit="return handleEvent(event)">
-                    <input id="name" type="text" name="input" value="" placeholder="https://aylien.com/text-api/">
-                    <input type="submit" name="" value="Check sentiment" onclick="return C.handleEvent(event)" onsubmit="return C.handleEvent(event)">
+                    <input id="location" type="text" name="location" value="Paris">
+                    <input id="dayFrom" type="text" name="dayFrom" value="2020-03-02T00:00:00">
+                    <input id="dayTo" type="text" name="dayTo" value="2020-03-06T00:00:00">
+                    <input type="submit" name="" value="Book it!" onclick="return C.handleEvent(event)" onsubmit="return C.handleEvent(event)">
                 </form>
-            <section>
+            </section>
 
             <section>
-                <strong>Form Results:</strong>
+                <strong>Your trips:</strong>
                 <div id="results">
                 </div>
             </section>

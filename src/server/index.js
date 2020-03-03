@@ -9,12 +9,12 @@ const weather = require('./darkSky.js');
 const pix = require('./pixabay.js');
 const trips = require('./trips.js');
 const moment = require('moment');
-
+app.use(cors());
 app.use(express.static('dist'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors());
+
 console.log(__dirname);
 
 app.listen(8081, function () {
