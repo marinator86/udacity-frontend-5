@@ -5,20 +5,21 @@ $padding: 0.5em;
     "a d c"
     "b b c";
     grid-template-columns: 1fr 1fr 18em;
-    grid-template-rows: 10em;
+    grid-template-rows: 1fr 15em;
     gap: 3px;
     
-    border: 1px solid #545454;
-    border-radius: 3px;
+    border: 2px solid linen;
+    background-color: lightsteelblue;
+    border-radius: 5px;
 
-    padding: $padding/2;
+    padding: $padding;
     margin-top: 1em;
     
     .title {
         grid-area: a;
         padding: $padding;
     }
-    .text {
+    .weatherBox {
         grid-area: b;
         padding: $padding;
     }

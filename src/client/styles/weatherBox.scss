@@ -1,0 +1,27 @@
+.weatherBox {
+    display: flex;
+    flex-direction: row;
+    gap: 1em 0.5em;
+
+    .dayBox {
+        flex-grow: 1;
+        text-align: center;
+
+        .top{
+            height: 2em;
+            display: block;
+        }
+
+        .day {
+            display: block;
+            border: 2px solid black;
+            //background-color: lightgrey;
+            border-radius: 5px;
+        }
+
+        .bottom {
+            height: 3em;
+            display: block;
+        }
+    }
+}
