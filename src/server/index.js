@@ -9,6 +9,7 @@ const weather = require('./darkSky.js');
 const pix = require('./pixabay.js');
 const trips = require('./trips.js');
 const moment = require('moment');
+const port = process.env.PORT || 8081;
 app.use(cors());
 app.use(express.static('dist'));
 
@@ -17,8 +18,8 @@ app.use(bodyParser.json());
 
 console.log(__dirname);
 
-app.listen(8081, function () {
-    console.log('Example app listening on port 8081!');
+app.listen(port, function () {
+    console.log(`Example app listening on port ${port}!`);
 })
 
 app.get('/', function (req, res) {
