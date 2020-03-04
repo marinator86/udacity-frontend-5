@@ -1,7 +1,7 @@
 import { appendTrip } from './DOMUpdater.js';
 
 function loadInit() {
-    return fetch('http://localhost:8081/trips')
+    return fetch('/trips')
     .then(res => res.json())
     .then(trips => trips.forEach(appendTrip));
 }

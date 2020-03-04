@@ -15,7 +15,7 @@ function handleEvent(event) {
 }
 
 function handleSubmit(tripRequest) {
-    return fetch('http://localhost:8081/trip', {
+    return fetch('/trip', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
