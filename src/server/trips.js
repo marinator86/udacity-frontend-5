@@ -12,8 +12,8 @@ function isValid(tripRequest) {
 }
 
 // create trip - transforms a trip request to a trip info
-async function createTrip(tripRequest) {
-    if(!isValid(tripRequest)) throw new Error("Your fucking trip is invalid");
+async function createTravel(tripRequest) {
+    if(!isValid(tripRequest)) throw new Error("Your trip is invalid");
     const trip = {};
     trip.location = tripRequest.location;
     trip.dayFrom = tripRequest.dayFrom;
@@ -55,4 +55,4 @@ function getAllTrips() {
     return trips;
 }
 
-module.exports = { createTrip, getAllTrips, deleteTrip };
+module.exports = { createTravel, getAllTrips, deleteTrip };
