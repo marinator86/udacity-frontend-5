@@ -43,8 +43,11 @@ async function createTrip(tripRequest) {
 
 // delete trip
 function deleteTrip(id) {
+    const newTrips = trips.filter(trip => {
+        return trip.id != id
+    });
     trips.length = 0;
-    trips.concat(trips.filter(trip => trip.id != id));
+    trips.push(...newTrips);
 }
 
 // get all trips
