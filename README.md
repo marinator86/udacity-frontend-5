@@ -1,11 +1,12 @@
 # Webpack Express With Sass Example App
 
-## Alyien
+## API Credentials
 copy Alyien API credentials into an .env at the top level of the repo. It should look like:
 
 ```
-APP_ID=ec07XXXX
-APP_KEY=f814651af07571aXXXXXXXXXXXXXXX
+GEONAMES_USER=maxxxxxxxx
+DARKSKY_KEY=343af893e7xxxxxxxxxxxxxxxxxxxxxx
+PIXABAY_KEY=15468943-0cb2f0xxxxxxxxxxxxxxxxx
 ```
 
 ## Running it
@@ -14,4 +15,4 @@ APP_KEY=f814651af07571aXXXXXXXXXXXXXXX
 - ```npm run build-prod``` to generate a dist folder for prod
 - ```npm start``` to run the Express server on port 8081
 
-Open the index.html file inside the dist folder.
+Open the browser on localhost:8081

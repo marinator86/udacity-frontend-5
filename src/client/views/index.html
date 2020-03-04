@@ -3,19 +3,21 @@
     <head>
         <meta charset="utf-8">
         <title>My personal trips</title>
+        <link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet"> 
     </head>
 
     <body>
 
         <header>
             <div class="">
-                My personal trips
+                <h1>My personal trips</h1>
             </div>
         </header>
 
         <main>
             <section>
                 <form class="" onsubmit="return handleEvent(event)">
+                    <p>Hello! Enter your trip details here</p>
                     <input id="location" type="text" name="location" value="Paris">
                     <input id="dayFrom" type="text" name="dayFrom" value="2020-03-02">
                     <input id="dayTo" type="text" name="dayTo" value="2020-03-06">
@@ -24,7 +26,7 @@
             </section>
 
             <section>
-                <strong>Your trips:</strong>
+                <strong>Check your booked trips:</strong>
                 <div id="results">
                 </div>
             </section>

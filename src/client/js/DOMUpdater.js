@@ -20,8 +20,8 @@ function appendTrip(res) {
 
     const context = {
         maxHeight: 10,
-        tMax: Math.max(...trip.weather.map(w => w.temperatureHigh)),
-        tMin: Math.min(...trip.weather.map(w => w.temperatureLow)),
+        tMax: Math.max(...trip.weather.map(w => w.temperatureHigh), 25),
+        tMin: Math.min(...trip.weather.map(w => w.temperatureLow), 5),
     };
 
     trip.weather.forEach(w => createWeatherDay(context, weatherBox, w));
@@ -62,7 +62,7 @@ function createWeatherDay(ctx, weatherBox, weather){
     day.style.height = `${height}em`;
 
     const bottom = document.createElement('div');
-    bottom.classList.add('top');
+    bottom.classList.add('bottom');
     bottom.textContent = `${dayMin}°`;
 
     dayBox.appendChild(top)
