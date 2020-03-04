@@ -1,4 +1,4 @@
-const DOMUpdater = require('./DOMUpdater.js');
+import { appendTrip } from './DOMUpdater.js';
 
 function handleEvent(event) {
     event.preventDefault();
@@ -23,7 +23,7 @@ function handleSubmit(tripRequest) {
         body: JSON.stringify(tripRequest)
     })
     .then(res => res.json())
-    .then(DOMUpdater.appendTrip);
+    .then(appendTrip);
 }
 
-module.exports = { handleEvent, handleSubmit }
+export { handleEvent, handleSubmit }

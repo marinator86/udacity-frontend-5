@@ -11,7 +11,7 @@ const mockFetchPromise = Promise.resolve({
 global.fetch = jest.fn(() => mockFetchPromise);
 
 test('formHandle', () => {
-    const formHandler = require('./formHandler.js');
+    const formHandler = require('./formHandler.js').default;
 
     return formHandler.handleSubmit('testUrl').then(data => {
         expect(data).toStrictEqual({url:'testUrl'});
