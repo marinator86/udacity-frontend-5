@@ -53,7 +53,7 @@ function createWeatherDay(ctx, weatherBox, weather){
 
     const top = document.createElement('div');
     top.classList.add('top');
-    top.textContent = `${dayMax}°`;
+    top.innerHTML = `<p>${moment(weather.uvIndexTime * 1000).format('MMM D')}</p><p>${dayMax}°</p>`;
 
     const day = document.createElement('div');
     day.classList.add('day');

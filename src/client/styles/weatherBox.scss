@@ -2,14 +2,15 @@
     display: flex;
     flex-direction: row;
     gap: 1em 0.5em;
+    background-color: rgb(203, 214, 228);
 
     .dayBox {
         flex-grow: 1;
         text-align: center;
 
         .top{
-            height: 2em;
-            padding-top: 1em;
+            height: 3em;
+            padding-top: 0em;
             display: block;
             font-size: 70%;
         }
